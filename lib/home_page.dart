@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:aplikasi_login/pages/UserListPage.dart';
 
 class HomePage extends StatelessWidget {
   final String username;
@@ -25,6 +26,17 @@ class HomePage extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const UserListPage(),
+                          ),
+                        );
+                      },
+                      child: const Text("Daftar User"),
+                    ),
                     const CircleAvatar(
                       radius: 30,
                       child: Icon(Icons.person),
