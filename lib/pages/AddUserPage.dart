@@ -28,7 +28,7 @@ class _AddUserPageState extends State<AddUserPage> {
     try {
       // Menggunakan IP 10.0.2.2 khusus untuk Emulator Android agar terhubung ke localhost laptop
       final response = await http.post(
-        Uri.parse("http://10.0.2.2/flutter_api/user/add_user.php"),
+        Uri.parse("http://localhost/flutter_api/user/add_user.php"),
         body: {
           "username": username.text,
           "email": email.text,
