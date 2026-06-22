@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jun 2026 pada 17.45
+-- Waktu pembuatan: 22 Jun 2026 pada 08.36
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -31,19 +31,21 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `foto` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
-(1, 'keren', 'hedi@gmail.com', '$2y$10$xvv2eVvzstR7PB7yJyttWefPG5RojyeZuppkNWRfiShwh3p7id63m'),
-(3, 'hedo', 'hedot@email.com', '$2y$10$yWDxYe7cVll04e3/EnYCQOJ5ti9IgmTHUI0gaUN0kf1Hs9i9yVBna'),
-(4, 'hedi', 'hedi@email.com', '$2y$10$.DIjghRXqpuht/4AvClCuuZhrrWYROxhoio8sFcWlRbrYA5DjXwr2'),
-(5, 'au', 'au@email.com', '$2y$10$WHy6u9hXfATcWO2A4SRGR.sbecpL2/C08sL0w3izAFJmFQCpOOOlO'),
-(8, 'nor', 'tes@email.com', '$2y$10$4iaZFuynCLalSIBQQwg0COaRfA6Amn/ZKoRjo68L8l119.W6bv0xy');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `foto`) VALUES
+(1, 'keren', 'hedi@gmail.com', '$2y$10$xvv2eVvzstR7PB7yJyttWefPG5RojyeZuppkNWRfiShwh3p7id63m', NULL),
+(3, 'hedo', 'hedot@email.com', '$2y$10$yWDxYe7cVll04e3/EnYCQOJ5ti9IgmTHUI0gaUN0kf1Hs9i9yVBna', NULL),
+(4, 'hedi', 'hedi@email.com', '$2y$10$.DIjghRXqpuht/4AvClCuuZhrrWYROxhoio8sFcWlRbrYA5DjXwr2', '1782110022_WIN_20260226_14_08_03_Pro.jpg'),
+(5, 'au', 'au@email.com', '$2y$10$WHy6u9hXfATcWO2A4SRGR.sbecpL2/C08sL0w3izAFJmFQCpOOOlO', NULL),
+(8, 'nor', 'tes@email.com', '$2y$10$4iaZFuynCLalSIBQQwg0COaRfA6Amn/ZKoRjo68L8l119.W6bv0xy', NULL),
+(9, 'hedot', 'hedot@email.com', '$2y$10$Olctzjpni8SEn9Y/nJ.7b.MGI9OUXt9DLsd/BcpLeTVzZ7.OxfRCG', '1782103721_WIN_20260226_14_08_03_Pro.jpg');
 
 --
 -- Indexes for dumped tables
@@ -63,7 +65,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

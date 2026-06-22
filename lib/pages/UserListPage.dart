@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 
 import 'AddUserPage.dart';
 import 'EditUserPage.dart';
+import 'UploadFotoPage.dart';
 
 class UserListPage extends StatefulWidget {
   const UserListPage({super.key});
@@ -139,8 +140,28 @@ class _UserListPageState extends State<UserListPage> {
                     itemBuilder: (context, index) {
                       return Card(
                         child: ListTile(
-                          leading: const CircleAvatar(
-                            child: Icon(Icons.person),
+                          leading: CircleAvatar(
+                            radius: 25,
+                            backgroundImage:
+                                filteredUsers[index]["foto"] != null &&
+                                        filteredUsers[index]["foto"]
+                                            .toString()
+                                            .isNotEmpty
+                                    ? NetworkImage(
+                                        Uri.encodeFull(
+                                          "http://localhost/FLUTTER_API/uploads/${filteredUsers[index]["foto"]}",
+                                        ),
+                                      )
+                                    : null,
+                            child: filteredUsers[index]["foto"] == null ||
+                                    filteredUsers[index]["foto"]
+                                        .toString()
+                                        .isEmpty
+                                ? Text(
+                                    filteredUsers[index]["username"][0]
+                                        .toUpperCase(),
+                                  )
+                                : null,
                           ),
                           title: Text(
                             filteredUsers[index]["username"],
@@ -151,6 +172,26 @@ class _UserListPageState extends State<UserListPage> {
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
+                              IconButton(
+                                icon: const Icon(
+                                  Icons.camera_alt,
+                                  color: Colors.blue,
+                                ),
+                                onPressed: () async {
+                                  final refresh = await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => UploadFotoPage(
+                                        userId: filteredUsers[index]["id"],
+                                      ),
+                                    ),
+                                  );
+
+                                  if (refresh == true) {
+                                    getUsers();
+                                  }
+                                },
+                              ),
                               IconButton(
                                 icon: const Icon(
                                   Icons.edit,
